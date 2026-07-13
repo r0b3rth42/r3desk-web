@@ -1,0 +1,124 @@
+<div class="login-container">
+
+  <!-- PANEL IZQUIERDO -->
+  <section class="brand-panel">
+
+    <div class="overlay"></div>
+
+    <div class="brand-content">
+
+      <img
+        src="assets/images/r3desk-logo.png"
+        alt="R3Desk"
+        class="logo">
+
+      <h1>
+        Gestiona, controla y resuelve incidencias.
+      </h1>
+
+      <p>
+        Plataforma integral para la gestión de tickets,
+        soporte técnico y seguimiento de solicitudes.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span>🎫</span>
+          <div>
+            <h3>Gestión de Tickets</h3>
+            <p>Registro y seguimiento centralizado.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <span>⚡</span>
+          <div>
+            <h3>Atención Eficiente</h3>
+            <p>Reducción de tiempos de respuesta.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <span>📊</span>
+          <div>
+            <h3>Indicadores SLA</h3>
+            <p>Monitoreo y reportes en tiempo real.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PANEL DERECHO -->
+  <section class="login-panel">
+
+    <div class="login-card">
+
+      <img
+        src="assets/images/r3desk-icon.png"
+        alt="R3Desk"
+        class="icon-logo">
+
+      <h2>Bienvenido</h2>
+
+      <p class="subtitle">
+        Inicia sesión para continuar
+      </p>
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="login()">
+
+        <div class="field">
+
+          <label>Usuario</label>
+
+          <input
+            type="text"
+            formControlName="username"
+            placeholder="Ingrese su usuario">
+
+        </div>
+
+        <div class="field">
+
+          <label>Contraseña</label>
+
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="Ingrese su contraseña">
+
+        </div>
+
+        @if(errorMessage){
+
+          <div class="error">
+            {{ errorMessage }}
+          </div>
+
+        }
+
+        <button
+          type="submit"
+          [disabled]="loading">
+
+          {{ loading ? 'Ingresando...' : 'Iniciar sesión' }}
+
+        </button>
+
+      </form>
+
+      <div class="footer">
+        © 2026 R3Desk
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

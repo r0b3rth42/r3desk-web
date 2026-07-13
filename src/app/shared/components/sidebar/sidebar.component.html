@@ -1,0 +1,142 @@
+<nav class="sidebar">
+
+  <!-- Logo -->
+  <div class="logo">
+    <div class="logo-icon">R</div>
+
+    <div class="logo-text">
+      <h2>R3Desk</h2>
+      <small>Service Desk</small>
+    </div>
+  </div>
+
+  <!-- GENERAL -->
+  <div class="section">
+
+    <div class="section-title">
+      GENERAL
+    </div>
+
+    <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+
+      <span class="icon">📊</span>
+      <span>Dashboard</span>
+
+    </a>
+
+  </div>
+
+  <!-- TICKETS -->
+  <div class="section">
+
+    <div class="section-title">
+      TICKETS
+    </div>
+
+    <div class="menu-parent">
+      <img src="ticket-svgrepo-com.svg" alt="Tickets" class="menu-icon">
+      <span>Gestión de Tickets</span>
+    </div>
+
+    <a class="submenu" routerLink="/tickets" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+
+      <span>Todos los Tickets</span>
+
+    </a>
+
+    <a class="submenu" routerLink="/tickets/new" routerLinkActive="active">
+
+      <span>Crear Ticket</span>
+
+    </a>
+
+  </div>
+
+  <!-- MANTENIMIENTO -->
+  <div class="section">
+
+    <div class="section-title">
+      MANTENIMIENTO
+    </div>
+
+    <a routerLink="/users" routerLinkActive="active">
+
+      <span class="icon">👥</span>
+      <span>Usuarios</span>
+
+    </a>
+
+    <a routerLink="/areas" routerLinkActive="active">
+
+      <span class="icon">🏢</span>
+      <span>Áreas</span>
+
+    </a>
+
+    <a routerLink="/grupos" routerLinkActive="active">
+
+      <span class="icon">🗂️</span>
+      <span>Grupos</span>
+
+    </a>
+
+  </div>
+
+  <!-- CONOCIMIENTO -->
+  <div class="section">
+
+    <div class="section-title">
+      CONOCIMIENTO
+    </div>
+
+    <a routerLink="/knowledge-base" routerLinkActive="active">
+
+      <span class="icon">📚</span>
+      <span>Base de Conocimiento</span>
+
+    </a>
+
+  </div>
+
+  <!-- REPORTES -->
+  <div class="section">
+
+    <div class="section-title">
+      REPORTES
+    </div>
+
+    <a routerLink="/reports" routerLinkActive="active">
+
+      <span class="icon">📈</span>
+      <span>Reportes</span>
+
+    </a>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="sidebar-footer">
+
+    <div class="user-info">
+      <div class="user-avatar">
+        A
+      </div>
+
+      <div class="user-data">
+        <div class="user-name">
+          Administrador
+        </div>
+
+        <div class="user-role">
+          Admin
+        </div>
+      </div>
+    </div>
+
+    <div class="version">
+      R3Desk v1.0.0
+    </div>
+
+  </div>
+
+</nav>

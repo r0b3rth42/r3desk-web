@@ -1,0 +1,19 @@
+.layout-container {
+
+  display: flex;
+
+  height: calc(100vh - 72px);
+
+  overflow: hidden;
+}
+
+.page-container {
+
+  flex: 1;
+
+  padding: 24px;
+
+  background: #f8fafc;
+
+  overflow-y: auto;
+}

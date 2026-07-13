@@ -1,0 +1,137 @@
+:host {
+    display: block;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-card {
+    padding: 24px;
+  
+    border-radius: 16px;
+  
+    background: #fcfcfd;
+  
+    border: 1px solid #eef2f7;
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 600;
+  
+    color: #111827;
+  
+    margin-bottom: 4px;
+  }
+  
+  .required {
+    color: #ef4444;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+  
+    padding: 14px 16px;
+  
+    background: #fff;
+  
+    border: 1px solid #dbe2ea;
+  
+    border-radius: 12px;
+  
+    font-size: 14px;
+  
+    transition:
+      border-color .2s,
+      box-shadow .2s,
+      background .2s;
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+  
+    border-color: #2563eb;
+  
+    box-shadow:
+      0 0 0 4px rgba(37, 99, 235, .10);
+  
+    background: #ffffff;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #9ca3af;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .error {
+    margin-top: 4px;
+  
+    color: #dc2626;
+  
+    font-size: 12px;
+  
+    font-weight: 500;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+  
+    padding-top: 12px;
+  
+    border-top: 1px solid #eef2f7;
+  }
+  
+  .btn-save {
+    min-width: 140px;
+  
+    padding: 12px 20px;
+  
+    border: none;
+  
+    border-radius: 12px;
+  
+    background: linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
+  
+    color: white;
+  
+    font-size: 14px;
+    font-weight: 600;
+  
+    cursor: pointer;
+  
+    transition: .2s;
+  }
+  
+  .btn-save:hover {
+    transform: translateY(-1px);
+  
+    box-shadow:
+      0 8px 18px rgba(37,99,235,.25);
+  }
+
+  .btn-save:active {
+    transform: translateY(0);
+  }
+  

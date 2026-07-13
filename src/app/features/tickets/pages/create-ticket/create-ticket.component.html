@@ -1,0 +1,306 @@
+<div class="ticket-page">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+      <h1>Crear Nuevo Ticket</h1>
+
+      <p>
+        Registre una incidencia, solicitud o consulta para seguimiento.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FORM -->
+
+  <form
+    class="ticket-card"
+    [formGroup]="form"
+    (ngSubmit)="save()">
+
+    <!-- INFORMACION GENERAL -->
+
+    <div class="card-section">
+
+      <h2>Información General</h2>
+
+      <div class="form-group full-width">
+
+        <label>
+          Título
+          <span class="required">*</span>
+        </label>
+
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="Ej. No puedo acceder al sistema ERP" />
+
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ASIGNACION -->
+
+    <div class="card-section">
+
+      <h2>Asignación</h2>
+
+      <div class="row">
+
+        <div class="form-group">
+
+          <label>
+            Área Responsable
+            <span class="required">*</span>
+          </label>
+
+          <select formControlName="area">
+
+            <option value="">Seleccione</option>
+
+            @for (area of areas(); track area.id) {
+
+              <option [value]="area.id">
+                {{ area.nombre }}
+              </option>
+
+            }
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Grupo Responsable
+            <span class="required">*</span>
+          </label>
+
+          <select formControlName="group">
+
+            <option value="">Seleccione</option>
+
+            @for(group of reviewerGroups(); track group.id) {
+
+              <option [value]="group.id">
+                {{ group.nombre }}
+              </option>
+
+            }
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- SOLICITANTE -->
+
+    <div class="card-section">
+
+      <h2>Solicitante</h2>
+
+      <div class="row">
+
+        <div class="form-group">
+
+          <label>
+            Área Solicitante
+            <span class="required">*</span>
+          </label>
+
+          <select formControlName="requesterArea">
+
+            <option value="">Seleccione</option>
+
+            @for (area of areas(); track area.id) {
+
+              <option [value]="area.id">
+                {{ area.nombre }}
+              </option>
+
+            }
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Grupo Solicitante
+            <span class="required">*</span>
+          </label>
+
+          <select formControlName="requesterGroup">
+
+            <option value="">Seleccione</option>
+
+            @for(group of requesterGroups(); track group.id) {
+
+              <option [value]="group.id">
+                {{ group.nombre }}
+              </option>
+
+            }
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- CLASIFICACION -->
+
+    <div class="card-section">
+
+      <h2>Clasificación</h2>
+
+      <div class="row">
+
+        <div class="form-group">
+
+          <label>
+            Categoría
+            <span class="required">*</span>
+          </label>
+
+          <select formControlName="category">
+
+            <option value="">Seleccione</option>
+
+            <option value="INCIDENTE">
+              Incidente
+            </option>
+
+            <option value="REQUERIMIENTO">
+              Requerimiento
+            </option>
+
+            <option value="CONSULTA">
+              Consulta
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Prioridad
+            <span class="required">*</span>
+          </label>
+
+          <select formControlName="priority">
+
+            <option value="">Seleccione</option>
+
+            <option value="LOW">Baja</option>
+            <option value="MEDIUM">Media</option>
+            <option value="HIGH">Alta</option>
+            <option value="CRITICAL">Crítica</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- DESCRIPCION -->
+
+    <div class="card-section">
+
+      <h2>Detalle del Ticket</h2>
+
+      <div class="form-group full-width">
+
+        <label>
+          Descripción
+          <span class="required">*</span>
+        </label>
+
+        <textarea
+          rows="8"
+          formControlName="description"
+          placeholder="Explique detalladamente el problema o requerimiento">
+        </textarea>
+
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ADJUNTOS -->
+
+    <div class="card-section">
+
+      <h2>Archivos Adjuntos</h2>
+
+      <div class="upload-box">
+
+        <div class="upload-icon">
+          📎
+        </div>
+
+        <div class="upload-title">
+          Arrastre archivos aquí
+        </div>
+
+        <div class="upload-subtitle">
+          o haga clic para seleccionarlos
+        </div>
+
+        <input
+          type="file"
+          multiple>
+
+      </div>
+
+    </div>
+
+    <!-- ACTIONS -->
+
+    <div class="actions">
+
+      <button
+        type="button"
+        class="btn-secondary">
+
+        Cancelar
+
+      </button>
+
+      <button
+        type="submit"
+        class="btn-primary">
+
+        Crear Ticket
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

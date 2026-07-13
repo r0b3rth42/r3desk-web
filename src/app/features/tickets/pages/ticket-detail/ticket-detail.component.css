@@ -1,0 +1,326 @@
+.ticket-page {
+    padding: 24px;
+    background: #f8fafc;
+    min-height: 100vh;
+  }
+  
+  /* HEADER */
+  
+  .ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  
+  .breadcrumb {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 6px;
+  }
+  
+  .ticket-header h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .status-change {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .status-change label {
+    font-size: 12px;
+    color: #64748b;
+  }
+  
+  .status-select {
+    min-width: 220px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    font-size: 14px;
+  }
+  
+  .status-select:focus {
+    outline: none;
+    border-color: #2563eb;
+  }
+  
+  /* BADGES */
+  
+  .status-badge {
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  
+  .registered {
+    background: #dbeafe;
+    color: #2563eb;
+  }
+  
+  .assigned {
+    background: #ede9fe;
+    color: #7c3aed;
+  }
+  
+  .progress {
+    background: #fef3c7;
+    color: #d97706;
+  }
+  
+  .pending {
+    background: #fde68a;
+    color: #92400e;
+  }
+  
+  .resolved {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  
+  .closed {
+    background: #e5e7eb;
+    color: #374151;
+  }
+  
+  /* LAYOUT */
+  
+  .layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+  
+  .main-column,
+  .side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  /* CARD */
+  
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  
+  .card h2 {
+    margin: 0 0 20px;
+    color: #0f172a;
+    font-size: 18px;
+  }
+  
+  /* DESCRIPTION */
+  
+  .description {
+    line-height: 1.8;
+    color: #475569;
+  }
+  
+  /* TIMELINE */
+  
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .timeline-item {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    margin-top: 6px;
+    border-radius: 50%;
+    background: #2563eb;
+  }
+  
+  .timeline-content {
+    flex: 1;
+  }
+  
+  .timeline-title {
+    font-weight: 700;
+    color: #0f172a;
+  }
+  
+  .timeline-user {
+    color: #475569;
+    margin-top: 4px;
+  }
+  
+  .timeline-date {
+    color: #94a3b8;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  
+  /* COMMENTS */
+  
+  .comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  
+  .comments {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .comment {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+  }
+  
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .comment-header span {
+    font-size: 13px;
+    color: #64748b;
+  }
+  
+  .comment p {
+    margin: 0;
+    color: #475569;
+  }
+  
+  /* INFO */
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  
+  .info-row:last-child {
+    border-bottom: none;
+  }
+  
+  .info-row span {
+    color: #64748b;
+  }
+  
+  .info-row strong {
+    color: #0f172a;
+  }
+  
+  /* BUTTONS */
+  
+  .primary-btn {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .primary-btn:hover {
+    background: #1d4ed8;
+  }
+  
+  /* RESPONSIVE */
+  
+  @media (max-width: 1024px) {
+  
+    .layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .ticket-header {
+      flex-direction: column;
+      gap: 16px;
+    }
+  
+    .header-actions {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .status-select {
+      width: 100%;
+    }
+  
+  }
+
+
+  /* resolution */
+  .dialog-backdrop{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:999;
+
+}
+
+.dialog{
+
+    width:600px;
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:24px;
+
+}
+
+.dialog input,
+.dialog textarea{
+
+    width:100%;
+
+    margin-bottom:16px;
+
+}
+
+.dialog-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+}

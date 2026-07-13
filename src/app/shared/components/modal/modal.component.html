@@ -1,0 +1,32 @@
+@if(open()) {
+
+    <div
+      class="modal-backdrop"
+      (click)="onBackdropClick()">
+  
+      <div
+        class="modal-container"
+        (click)="$event.stopPropagation()">
+  
+        <div class="modal-header">
+  
+          <h2>{{ title() }}</h2>
+  
+          <button
+            type="button"
+            class="close-btn"
+            (click)="close()">
+            ✕
+          </button>
+  
+        </div>
+  
+        <div class="modal-body">
+          <ng-content />
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  }

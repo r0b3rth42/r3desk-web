@@ -1,0 +1,259 @@
+@if(ticket()) {
+
+    <div class="ticket-page">
+    
+      <div class="ticket-header">
+    
+        <div>
+    
+          <div class="breadcrumb">
+            Tickets / {{ ticket()?.code }}
+          </div>
+    
+          <h1>
+            {{ ticket()?.title }}
+          </h1>
+    
+        </div>
+    
+        <div class="header-actions">
+    
+          <span
+            class="status-badge"
+            [class.registered]="ticket()?.status === 'REGISTERED'"
+            [class.assigned]="ticket()?.status === 'ASSIGNED'"
+            [class.progress]="ticket()?.status === 'IN_PROGRESS'"
+            [class.pending]="ticket()?.status === 'PENDING_CUSTOMER'"
+            [class.resolved]="ticket()?.status === 'RESOLVED'"
+            [class.closed]="ticket()?.status === 'CLOSED'">
+    
+            {{ ticket()?.status }}
+    
+          </span>
+    
+          @if(isReviewer()){
+          <div class="status-change">
+    
+            <label>
+              Change status
+            </label>
+    
+            <select class="status-select" (change)="changeStatus($event)">
+            
+              <option value="">
+                Select status
+              </option>
+            
+              @for(status of nextStatuses(); track status){
+            
+              <option [value]="status">
+                {{ status }}
+              </option>
+            
+              }
+            
+            </select>
+    
+          </div>
+          }
+    
+        </div>
+    
+      </div>
+    
+      <div class="layout">
+    
+        <!-- COLUMNA PRINCIPAL -->
+    
+        <div class="main-column">
+    
+          <div class="card">
+    
+            <h2>Description</h2>
+    
+            <p class="description">
+              {{ ticket()?.description }}
+            </p>
+    
+          </div>
+    
+          <div class="card">
+    
+            <h2>Ticket History</h2>
+    
+            <div class="timeline">
+    
+              @for(event of history(); track event.date) {
+    
+              <div class="timeline-item">
+    
+                <div class="timeline-dot"></div>
+    
+                <div class="timeline-content">
+    
+                  <div class="timeline-title">
+                    {{ event.status }}
+                  </div>
+    
+                  <div class="timeline-user">
+                    {{ event.user }}
+                  </div>
+    
+                  <div class="timeline-date">
+                    {{ event.date }}
+                  </div>
+    
+                </div>
+    
+              </div>
+    
+              }
+    
+            </div>
+    
+          </div>
+    
+          <div class="card">
+    
+            <div class="comments-header">
+            @if(isReviewer() || isRequester()){
+
+              <textarea [(ngModel)]="newComment">
+                        </textarea>
+              
+              <button class="primary-btn" (click)="addComment()">
+              
+                Add Comment
+              
+              </button>
+            
+            }
+          </div>
+    
+            <div class="comments">
+    
+              @for(comment of comments(); track comment.id) {
+    
+              <div class="comment">
+    
+                <div class="comment-header">
+    
+                  <strong>
+                    {{ comment.author }}
+                  </strong>
+    
+                  <span>
+                    {{ comment.date }}
+                  </span>
+    
+                </div>
+    
+                <p>
+                  {{ comment.comment }}
+                </p>
+    
+              </div>
+    
+              }
+    
+            </div>
+    
+          </div>
+    
+        </div>
+    
+        <!-- SIDEBAR -->
+    
+        <div class="side-column">
+    
+          <div class="card">
+    
+            <h2>Ticket Information</h2>
+    
+            <div class="info-row">
+              <span>Code</span>
+              <strong>{{ ticket()?.code }}</strong>
+            </div>
+    
+            <div class="info-row">
+              <span>Priority</span>
+              <strong>{{ ticket()?.priority }}</strong>
+            </div>
+    
+            <div class="info-row">
+              <span>Requester</span>
+              <strong>{{ ticket()?.requester?.username }}</strong>
+            </div>
+    
+            <div class="info-row">
+              <span>Area</span>
+              <strong>{{ ticket()?.targetArea?.nombre }}</strong>
+            </div>
+    
+            <div class="info-row">
+              <span>Group</span>
+              <strong>{{ ticket()?.targetGroup?.nombre }}</strong>
+            </div>
+    
+            <div class="info-row">
+              <span>Created</span>
+              <strong>{{ ticket()?.created }}</strong>
+            </div>
+
+            <div class="info-row">
+              <span>Reviewer</span>
+              <strong>{{ ticket()?.assignedTo?.username }}</strong>
+          </div>
+    
+          </div>
+    
+        </div>
+    
+      </div>
+    
+    </div>
+    
+    }
+
+    @if(showResolutionDialog){
+
+      <div class="dialog-backdrop">
+      
+          <div class="dialog">
+      
+              <h2>Resolution</h2>
+      
+              <label>Summary</label>
+      
+              <input
+                  [(ngModel)]="resolution.summary">
+      
+              <label>Root Cause</label>
+      
+              <textarea
+                  rows="6"
+                  [(ngModel)]="resolution.rootCause">
+              </textarea>
+      
+              <div class="dialog-buttons">
+      
+                  <button
+                      (click)="showResolutionDialog=false">
+                      Cancel
+                  </button>
+      
+                  <button
+                      class="primary-btn"
+                      (click)="confirmResolution()">
+      
+                      Resolve Ticket
+      
+                  </button>
+      
+              </div>
+      
+          </div>
+      
+      </div>
+      
+      }

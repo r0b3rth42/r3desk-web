@@ -1,0 +1,166 @@
+<div class="ticket-list-page">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Tickets</h1>
+      <p>
+        Gestión de incidencias y solicitudes.
+      </p>
+    </div>
+
+    <a
+      routerLink="/tickets/new"
+      class="new-ticket-btn">
+
+      + Nuevo Ticket
+
+    </a>
+
+  </div>
+
+  <div class="filters-card">
+
+    <input
+      #searchInput
+      type="text"
+      placeholder="Buscar ticket..."
+      (input)="searchTerm.set(searchInput.value)" />
+
+    <select
+      #statusSelect
+      (change)="statusFilter.set(statusSelect.value)">
+
+      <option value="">
+        Todos los estados
+      </option>
+
+      <option value="ABIERTO">
+        Abierto
+      </option>
+
+      <option value="EN PROCESO">
+        En Proceso
+      </option>
+
+      <option value="CERRADO">
+        Cerrado
+      </option>
+
+    </select>
+
+    <select
+      #prioritySelect
+      (change)="priorityFilter.set(prioritySelect.value)">
+
+      <option value="">
+        Todas las prioridades
+      </option>
+
+      <option value="CRÍTICA">
+        Crítica
+      </option>
+
+      <option value="ALTA">
+        Alta
+      </option>
+
+      <option value="MEDIA">
+        Media
+      </option>
+
+      <option value="BAJA">
+        Baja
+      </option>
+
+    </select>
+
+  </div>
+
+  <div class="table-card">
+
+    <table>
+
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Área</th>
+        <th>Grupo</th>
+        <th>Estado</th>
+        <th>Prioridad</th>
+        <th>Fecha</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      @for (ticket of filteredTickets(); track ticket.id) {
+
+        <tr>
+
+          <td>
+            <a [routerLink]="['/tickets', ticket.code]" >{{ ticket.code }}</a>
+            
+          </td>
+
+          <td>{{ ticket.title }}</td>
+
+          <td>{{ ticket.targetArea.nombre }}</td>
+
+          <td>{{ ticket.targetGroup.nombre }}</td>
+
+          <td>
+
+            <span
+              class="status"
+              [class.open]="ticket.status === 'ABIERTO'"
+              [class.progress]="ticket.status === 'EN PROCESO'"
+              [class.closed]="ticket.status === 'CERRADO'">
+
+              {{ ticket.status }}
+
+            </span>
+
+          </td>
+
+          <td>
+
+            <span
+              class="priority"
+              [class.priority-critical]="ticket.priority === 'CRITICAL'"
+              [class.priority-high]="ticket.priority === 'HIGH'"
+              [class.priority-medium]="ticket.priority === 'MEDIUM'"
+              [class.priority-low]="ticket.priority === 'LOW'">
+          
+              {{ ticket.priority }}
+          
+            </span>
+          
+          </td>
+
+          <td>{{ ticket.created }}</td>
+
+        </tr>
+
+      } @empty {
+
+        <tr>
+
+          <td colspan="7" style="text-align:center; padding: 20px;">
+
+            No se encontraron tickets.
+
+          </td>
+
+        </tr>
+
+      }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

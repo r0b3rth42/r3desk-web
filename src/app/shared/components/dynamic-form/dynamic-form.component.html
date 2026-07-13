@@ -1,0 +1,116 @@
+<form
+  class="form-card"
+  [formGroup]="form()"
+  (ngSubmit)="save()">
+
+  @for(field of fields(); track field.key) {
+
+    <div class="form-field">
+
+      <label>
+        {{ field.label }}
+
+        @if(field.required) {
+          <span class="required">*</span>
+        }
+
+      </label>
+
+      @switch(field.type) {
+
+        @case('text') {
+
+          <input
+            type="text"
+            [formControlName]="field.key"
+            [placeholder]="field.placeholder ?? ''">
+        }
+
+        @case('email') {
+
+          <input
+            type="email"
+            [formControlName]="field.key"
+            [placeholder]="field.placeholder ?? ''">
+        }
+
+        @case('number') {
+
+          <input
+            type="number"
+            [formControlName]="field.key"
+            [placeholder]="field.placeholder ?? ''">
+        }
+
+        @case('textarea') {
+
+          <textarea
+            rows="4"
+            [formControlName]="field.key"
+            [placeholder]="field.placeholder ?? ''">
+          </textarea>
+        }
+
+        @case('select') {
+
+          <select
+            [formControlName]="field.key">
+
+            <option value="">
+              Seleccione...
+            </option>
+
+            @for(
+              option of field.options ?? [];
+              track option.value
+            ) {
+
+              <option
+                [value]="option.value">
+
+                {{ option.label }}
+
+              </option>
+
+            }
+
+          </select>
+        }
+
+      }
+
+      @if(
+        form()
+          .get(field.key)
+          ?.invalid
+        &&
+        form()
+          .get(field.key)
+          ?.touched
+      ) {
+
+        <small class="error">
+
+          Campo obligatorio
+
+        </small>
+
+      }
+
+    </div>
+
+  }
+
+  <div class="actions">
+
+    <button
+      type="submit"
+      class="btn-save">
+
+      {{ submitLabel() }}
+
+    </button>
+
+  </div>
+
+</form>

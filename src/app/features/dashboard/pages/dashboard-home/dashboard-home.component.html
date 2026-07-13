@@ -1,0 +1,148 @@
+<div class="dashboard">
+
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <h1>Dashboard Operacional</h1>
+      <span>Resumen general del sistema</span>
+    </div>
+
+    <div class="actions">
+      <button>Últimos 30 días</button>
+      <button>Todas las áreas</button>
+      <button class="primary">Actualizar</button>
+    </div>
+  </header>
+
+  <!-- KPIs -->
+  <section class="kpis">
+
+    <div class="card kpi">
+      <h3>Tickets Abiertos</h3>
+      <span class="number">{{dashboard.resume.openTickets}}</span>
+    </div>
+
+    <div class="card kpi">
+      <h3>Resueltos Hoy</h3>
+      <span class="number">{{dashboard.resume.closedToday}}</span>
+    </div>
+
+    <div class="card kpi">
+      <h3>Cumplimiento SLA</h3>
+      <span class="number">94.5%</span>
+    </div>
+
+    <div class="card kpi danger">
+      <h3>Tickets Críticos</h3>
+      <span class="number">{{dashboard.resume.critical}}</span>
+    </div>
+
+  </section>
+
+  <!-- Charts -->
+  <section class="charts">
+
+    <div class="card">
+      <h2>Tickets por Estado</h2>
+    
+      <div id="chart" style="min-height: 250px;">
+        @if (chartOptions.series && chartOptions.series.length > 0) {
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart!"
+            [labels]="chartOptions.labels"
+            [colors]="chartOptions.colors!"
+            [legend]="chartOptions.legend!"
+            [responsive]="chartOptions.responsive!">
+          </apx-chart>
+        } @else {
+          <div class="loading-chart">Cargando datos del sistema...</div>
+        }
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Tickets por Prioridad</h2>
+    
+      <div id="bar-chart" >
+        @if (barChartOptions.series && barChartOptions.series.length > 0) {
+          <apx-chart
+            [series]="barChartOptions.series"
+            [chart]="barChartOptions.chart!"
+            [xaxis]="barChartOptions.xaxis!"
+            [plotOptions]="barChartOptions.plotOptions!"
+            [dataLabels]="barChartOptions.dataLabels!"
+            [colors]="barChartOptions.colors!">
+          </apx-chart>
+        } @else {
+          <div class="loading-chart">Cargando métricas de prioridad...</div>
+        }
+      </div>
+    </div>
+
+    <div class="card trend">
+      <h2>Tendencia de Tickets</h2>
+    
+      <div id="line-chart" style="min-height: 300px;">
+        @if (lineChartOptions.series && lineChartOptions.series.length > 0) {
+          <apx-chart
+            [series]="lineChartOptions.series"
+            [chart]="lineChartOptions.chart!"
+            [xaxis]="lineChartOptions.xaxis!"
+            [stroke]="lineChartOptions.stroke!"
+            [dataLabels]="lineChartOptions.dataLabels!"
+            [grid]="lineChartOptions.grid!"
+            [markers]="lineChartOptions.markers!"
+            [colors]="lineChartOptions.colors!">
+          </apx-chart>
+        } @else {
+          <div class="loading-chart">Cargando histórico de tendencias...</div>
+        }
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Tables -->
+  <section class="tables">
+
+    <div class="card">
+      <h2>SLA en Riesgo</h2>
+      <table>
+        <thead>
+          <tr><th>Ticket</th><th>Prioridad</th><th>Responsable</th></tr>
+        </thead>
+        <tbody>
+          @for (ticket of dashboard.slaInRisk; track ticket.code) {
+            <tr>
+              <td>{{ ticket.code }}</td>
+              <td>{{ ticket.priority }}</td>
+              <td>{{ ticket.assignedTo }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="card">
+      <h2>Últimos Tickets</h2>
+      <table>
+        <thead>
+          <tr><th>Código</th><th>Estado</th><th>Prioridad</th><th>Responsable</th></tr>
+        </thead>
+        <tbody>
+          @for (ticket of dashboard.lastTickets; track ticket.code) {
+            <tr>
+              <td>{{ ticket.code }}</td>
+              <td><span class="badge {{ ticket.status.toLowerCase() }}">{{ ticket.status }}</span></td>
+              <td>{{ ticket.priority }}</td>
+              <td>{{ ticket.assignedTo }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+</div>

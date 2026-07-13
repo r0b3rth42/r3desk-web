@@ -1,0 +1,151 @@
+<div class="page">
+
+    <div class="page-header">
+  
+      <div>
+        <h1>Grupos</h1>
+        <p>Administración de grupos organizacionales</p>
+      </div>
+  
+      <button
+        class="btn-primary"
+        (click)="create()">
+  
+        + Nueva Grupo
+  
+      </button>
+  
+    </div>
+  
+    <div class="card">
+  
+      <div class="table-header">
+  
+        <input
+          type="text"
+          placeholder="Buscar área..." />
+  
+      </div>
+  
+      <table>
+  
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+  
+          @for(item of grupos(); track item.id) {
+  
+            <tr>
+  
+              <td>{{ item.id }}</td>
+  
+              <td>{{ item.nombre }}</td>
+  
+              <td>
+                <span class="badge active">
+                  Activo
+                </span>
+              </td>
+  
+              <td>
+  
+                <button class="btn-icon" (click)="edit(item)">
+                  <img src="modify.svg" alt="Actualizar" class="menu-icon"/>
+                </button>
+  
+                <button class="btn-icon" (click)="delete(item)">
+                  <img src="delete.svg" alt="Eliminar" class="menu-icon"/>
+                </button>
+  
+              </td>
+  
+            </tr>
+  
+          }
+  
+        </tbody>
+  
+      </table>
+  
+    </div>
+  
+  </div>
+  
+  <app-modal
+    [open]="modalOpen()"
+    [title]="selectedGrupo()
+      ? 'Editar Grupo'
+      : 'Nuevo Grupo'"
+    (closed)="closeModal()">
+  
+    <app-dynamic-form
+      [fields]="fields()"
+      [value]="selectedGrupo()"
+      (submitted)="save($event)">
+    </app-dynamic-form>
+  
+  </app-modal>
+
+  <app-modal
+    [open]="deleteModalOpen()"
+    title="Eliminar Grupo"
+    (closed)="cancelDelete()">
+
+    <div class="delete-content">
+
+        <div class="delete-icon">
+            🗑️
+        </div>
+
+        <h3>
+
+            ¿Eliminar este grupo?
+
+        </h3>
+
+        <p>
+
+            Se eliminará el grupo
+
+            <strong>
+
+                {{ grupoToDelete()?.nombre }}
+
+            </strong>
+
+            .
+
+            Esta acción no se puede deshacer.
+
+        </p>
+
+        <div class="delete-actions">
+
+            <button
+                class="btn-secondary"
+                (click)="cancelDelete()">
+
+                Cancelar
+
+            </button>
+
+            <button
+                class="btn-danger"
+                (click)="confirmDelete()">
+
+                Eliminar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</app-modal>

@@ -1,0 +1,109 @@
+.navbar {
+
+  height: 72px;
+
+  background: white;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 24px;
+
+  box-shadow: 0 1px 10px rgba(0,0,0,.04);
+}
+
+.logo {
+
+  height: 42px;
+}
+
+.navbar-center {
+
+  flex: 1;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.navbar-center input {
+
+  width: 450px;
+
+  padding: 12px 16px;
+
+  border: 1px solid #dbe2ea;
+
+  border-radius: 12px;
+
+  outline: none;
+}
+
+.navbar-right {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.icon-button {
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 20px;
+}
+
+.user-info {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.avatar {
+
+  width: 42px;
+
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-weight: 600;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.user-name {
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.user-role {
+
+  font-size: 12px;
+
+  color: #64748b;
+}
