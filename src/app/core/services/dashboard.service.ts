@@ -10,7 +10,7 @@ export class DashboardService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly API = 'http://localhost:8080/api/';
+  private readonly API = 'https://2vclckmpu9.execute-api.us-east-1.amazonaws.com/api/';
 
 
   getSummary(): Observable<Dashboard> {

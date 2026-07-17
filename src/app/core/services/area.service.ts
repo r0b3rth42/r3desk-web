@@ -11,7 +11,7 @@ export class AreaService {
     private readonly http = inject(HttpClient);
 
     private readonly API =
-      'http://localhost:8080/api/mantenimiento/';
+      'https://2vclckmpu9.execute-api.us-east-1.amazonaws.com/api/mantenimiento/';
   
       list(): Observable<Area[]> {
         return this.http.get<Area[]>(this.API + 'area');
