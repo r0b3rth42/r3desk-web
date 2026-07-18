@@ -17,25 +17,28 @@ private router = inject(Router);
 
 
 
-ngOnInit() {
-  this.oidc.checkAuth().subscribe({
-    next: (result) => {
-      console.log("RESULTADO COGNITO", result);
+ngOnInit(){
 
-      if (result.isAuthenticated) {
-        console.log("TOKEN", result.accessToken);
+  this.oidc.checkAuth()
+  .subscribe(result=>{
+ 
+     console.log("AUTH RESULT", result);
+ 
+     console.log("Authenticated:", result.isAuthenticated);
+ 
+     console.log("Access Token:", result.accessToken);
+ 
+     console.log("User Data:", result.userData);
+ 
+ 
+     if(result.isAuthenticated){
+ 
         this.router.navigate(['/dashboard']);
-      } else {
-        // 👈 Si no está autenticado o da el error 'no code', regrésalo al login
-        console.warn("Autenticación inválida o código ausente. Redirigiendo a Login.");
-        this.router.navigate(['/login']);
-      }
-    },
-    error: (err) => {
-      console.error("ERROR AUTH", err);
-      this.router.navigate(['/login']);
-    }
+ 
+     }
+ 
   });
-}
+ 
+ }
 
 }

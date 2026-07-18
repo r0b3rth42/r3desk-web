@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { TicketDetailComponent } from './features/tickets/pages/ticket-detail/ticket-detail.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -26,8 +27,10 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 loadComponent: () =>
-                    import('./features/dashboard/pages/dashboard-home/dashboard-home.component')
-                        .then(m => m.DashboardHomeComponent)
+                    import('./features/dashboard/pages/dashboard-home/dashboard-home.component').then(m => m.DashboardHomeComponent),
+                    canActivate:[
+                        authGuard
+                    ]
             },
             {
                 path: 'tickets',
@@ -58,7 +61,7 @@ export const routes: Routes = [
 
     {
         path: '',
-        redirectTo: 'login', // 👈 Cambiado de 'dashboard' a 'login'
+        redirectTo: 'dashboard', // 👈 Cambiado de 'dashboard' a 'login'
         pathMatch: 'full'
     },
 
