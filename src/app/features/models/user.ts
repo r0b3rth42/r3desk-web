@@ -1,5 +1,7 @@
 export interface User {
-    id: number;
+    id?: number;
     username: string;
-    role: string;
+    cognitoId?: string;
+    role?: string;
+    email?: string;
 }

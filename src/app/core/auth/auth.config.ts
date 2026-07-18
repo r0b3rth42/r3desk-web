@@ -27,5 +27,5 @@ export const authConfig: OpenIdConfiguration = {
     end_session_endpoint: `${COGNITO_DOMAIN}/logout`
   },
   
-  autoUserInfo: false
+  autoUserInfo: true
 };
