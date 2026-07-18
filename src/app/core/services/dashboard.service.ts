@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Dashboard } from '../dto/dahboard';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class DashboardService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly API = 'https://2vclckmpu9.execute-api.us-east-1.amazonaws.com/api/';
+  private readonly API = `${environment.apiUrl}`;
 
 
   getSummary(): Observable<Dashboard> {

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Area } from '../models/area';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,7 @@ export class AreaService {
 
     private readonly http = inject(HttpClient);
 
-    private readonly API =
-      'https://2vclckmpu9.execute-api.us-east-1.amazonaws.com/api/mantenimiento/';
+    private readonly API = `${environment.apiUrl}mantenimiento/`;
   
       list(): Observable<Area[]> {
         return this.http.get<Area[]>(this.API + 'area');
