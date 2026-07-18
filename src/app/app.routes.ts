@@ -3,6 +3,12 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { TicketDetailComponent } from './features/tickets/pages/ticket-detail/ticket-detail.component';
 
 export const routes: Routes = [
+    {
+        path:'callback',
+        loadComponent:()=> 
+        import('./features/auth/pages/callback/callback.component')
+        .then(m=>m.CallbackComponent)
+    },
 
     {
         path: 'login',
@@ -10,7 +16,7 @@ export const routes: Routes = [
             import('./features/auth/pages/login/login.component')
                 .then(m => m.LoginComponent)
     },
-
+    
     {
         path: '',
         component: MainLayoutComponent,
@@ -52,7 +58,7 @@ export const routes: Routes = [
 
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'login', // 👈 Cambiado de 'dashboard' a 'login'
         pathMatch: 'full'
     },
 
