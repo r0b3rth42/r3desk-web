@@ -45,4 +45,10 @@ export class AuthService {
 
     }
 
+    getCurrentUser(){
+
+        return this.oidc.userData$;
+       
+    }
+
 }
