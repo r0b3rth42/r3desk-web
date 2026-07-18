@@ -69,49 +69,17 @@
         Inicia sesión para continuar
       </p>
 
-      <form
-        [formGroup]="form"
-        (ngSubmit)="login()">
-
-        <div class="field">
-
-          <label>Usuario</label>
-
-          <input
-            type="text"
-            formControlName="username"
-            placeholder="Ingrese su usuario">
-
-        </div>
-
-        <div class="field">
-
-          <label>Contraseña</label>
-
-          <input
-            type="password"
-            formControlName="password"
-            placeholder="Ingrese su contraseña">
-
-        </div>
-
-        @if(errorMessage){
-
-          <div class="error">
-            {{ errorMessage }}
-          </div>
-
-        }
+      <div class="cognito-login">
 
         <button
-          type="submit"
-          [disabled]="loading">
-
-          {{ loading ? 'Ingresando...' : 'Iniciar sesión' }}
-
+          type="button"
+          (click)="login()">
+      
+          Iniciar sesión
+      
         </button>
-
-      </form>
+      
+      </div>
 
       <div class="footer">
         © 2026 R3Desk

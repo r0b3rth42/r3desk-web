@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ticket } from '../models/ticket';
 import { TicketStatusHistory } from '../models/status';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class TicketService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly API = 'https://2vclckmpu9.execute-api.us-east-1.amazonaws.com/api/';
+  private readonly API = `${environment.apiUrl}`;
 
 
   list(): Observable<Ticket[]> {

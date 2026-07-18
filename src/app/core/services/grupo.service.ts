@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Grupo } from '../models/grupo';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,7 @@ export class GrupoService {
 
     private readonly http = inject(HttpClient);
 
-    private readonly API =
-      'https://2vclckmpu9.execute-api.us-east-1.amazonaws.com/api/mantenimiento/';
+    private readonly API = `${environment.apiUrl}mantenimiento/`;
   
       listAll(): Observable<Grupo[]> {
         return this.http.get<Grupo[]>(`${this.API}grupo`);

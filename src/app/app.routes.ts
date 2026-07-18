@@ -1,8 +1,15 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { TicketDetailComponent } from './features/tickets/pages/ticket-detail/ticket-detail.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
+    {
+        path:'callback',
+        loadComponent:()=> 
+        import('./features/auth/pages/callback/callback.component')
+        .then(m=>m.CallbackComponent)
+    },
 
     {
         path: 'login',
@@ -10,7 +17,7 @@ export const routes: Routes = [
             import('./features/auth/pages/login/login.component')
                 .then(m => m.LoginComponent)
     },
-
+    
     {
         path: '',
         component: MainLayoutComponent,
@@ -20,8 +27,10 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 loadComponent: () =>
-                    import('./features/dashboard/pages/dashboard-home/dashboard-home.component')
-                        .then(m => m.DashboardHomeComponent)
+                    import('./features/dashboard/pages/dashboard-home/dashboard-home.component').then(m => m.DashboardHomeComponent),
+                    canActivate:[
+                        authGuard
+                    ]
             },
             {
                 path: 'tickets',
@@ -52,7 +61,7 @@ export const routes: Routes = [
 
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'dashboard', // 👈 Cambiado de 'dashboard' a 'login'
         pathMatch: 'full'
     },
 
